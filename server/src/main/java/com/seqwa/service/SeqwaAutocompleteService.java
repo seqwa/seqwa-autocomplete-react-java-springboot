@@ -13,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.seqwa.dao.AutocompleteResult;
+import com.seqwa.dao.RequestObject;
 
 @Service
 public class SeqwaAutocompleteService {
@@ -35,17 +36,17 @@ public class SeqwaAutocompleteService {
 	 * @param request
 	 * @return
 	 */
-	public AutocompleteResult autocomplete(String query) {
+	public AutocompleteResult autocomplete(RequestObject request) {
 		String urlTemplate = UriComponentsBuilder.fromHttpUrl(autocompleteURL).queryParam("index", "{index}")
 				.queryParam("query", "{query}").queryParam("fields", "{fields}")
 				.queryParam("highlightField", "{highlightField}").queryParam("maxResults", "{maxResults}").encode()
 				.toUriString();
 		Map<String, String> uriVariables = new HashMap<String, String>();
 		uriVariables.put("index", indexId);
-		uriVariables.put("query", query != null ? query : "");
-		uriVariables.put("fields", "title,price,link,image");
-		uriVariables.put("highlightField", "title");
-		uriVariables.put("maxResults", "25");
+		uriVariables.put("query", request.getQuery() != null ? request.getQuery() : "");
+		uriVariables.put("fields", request.getFields() != null ? request.getFields() : "title,price,link,image");
+		uriVariables.put("highlightField", request.getHighlightField() != null ? request.getHighlightField() : "title");
+		uriVariables.put("maxResults", request.getMaxResults() != null ? request.getMaxResults() : "25");
 
 		HttpHeaders headers = new HttpHeaders();
 		headers.set("seqwa-api-key", autocompleteAPIKey);

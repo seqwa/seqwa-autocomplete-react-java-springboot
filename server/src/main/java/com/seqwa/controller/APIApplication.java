@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.seqwa.dao.AutocompleteResult;
+import com.seqwa.dao.RequestObject;
 import com.seqwa.service.SeqwaAutocompleteService;
 
 @RestController
@@ -22,8 +23,8 @@ public class APIApplication {
 	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.GET, value = "/autocomplete")
-	public AutocompleteResult autocomplete(@ModelAttribute(value = "query") String query) {
-		return autocompleteService.autocomplete(query);
+	public AutocompleteResult autocomplete(@ModelAttribute RequestObject request) {
+		return autocompleteService.autocomplete(request);
 	}
 
 }
