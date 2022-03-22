@@ -6,7 +6,7 @@ import java.util.Map;
 public class AutocompleteResult {
 	private List<Suggestions> suggestions;
 	private List<String> relatedItems;
-	private List<Map<String, String>> records;
+	private List<Map<String, ?>> records;
 	private String error;
 
 	public List<Suggestions> getSuggestions() {
@@ -33,11 +33,11 @@ public class AutocompleteResult {
 		this.error = error;
 	}
 
-	public List<Map<String, String>> getRecords() {
+	public List<Map<String, ?>> getRecords() {
 		return records;
 	}
 
-	public void setRecords(List<Map<String, String>> records) {
+	public void setRecords(List<Map<String, ?>> records) {
 		this.records = records;
 	}
 
