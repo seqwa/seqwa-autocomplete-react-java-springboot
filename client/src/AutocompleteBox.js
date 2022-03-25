@@ -73,6 +73,7 @@ export default function AutocompleteBox() {
                                     <Combobox.Input
                                         className="w-full border-none focus:ring-0 py-2 pl-3 pr-10 text-sm leading-5 text-gray-900"
                                         defaultValue={query}
+                                        placeholder="search here.."
                                         displayValue={(result) => result.suggest}
                                         onChange={(event) => autocomplete(event.target.value)}
                                     />
@@ -147,6 +148,7 @@ export default function AutocompleteBox() {
                             <input
                                 className="w-full border-none rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-100 py-2 pl-3 pr-10 text-sm leading-5 text-gray-900"
                                 defaultValue={query}
+                                placeholder="search here.."
                                 onChange={(event) => autocomplete(event.target.value)}
                             />
 
